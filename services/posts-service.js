@@ -2,10 +2,12 @@ const postsDao = require('../daos/posts-dao');
 
 const findAllPosts = () => postsDao.findAllPosts();
 const findPostById = (postId) => postsDao.findPostById(postId);
-const findPostsForClub = (clubId) => postsDao.findPostsForClub(clubId);
+const createPost = (clubId, post) => postsDao.createPost(clubId, post);
+const deletePost = (postId) => postsDao.deletePost(postId);
 
 module.exports = {
     findAllPosts,
     findPostById,
-    findPostsForClub
+    createPost,
+    deletePost
 };
