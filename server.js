@@ -2,9 +2,10 @@ const express = require('express');
 const app = express();
 let bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const MONGODB_URI = process.env.MONGODB_URI
 
 mongoose.connect(
-    "mongodb+srv://wbdvafo21:wbdvafo21@anifansonly.n9z04.mongodb.net/anifansonlydb?retryWrites=true&w=majority",
+    MONGODB_URI,
     {useNewUrlParser: true, useUnifiedTopology: true})
     .catch((error) => {console.log(error)});
 
@@ -25,4 +26,5 @@ require("./controllers/users-controller")(app);
 require("./controllers/clubs-controller")(app);
 require('./controllers/posts-controller')(app);
 
-app.listen(process.env.PORT);
+require('dotenv').config();
+app.listen(process.env.PORT || 4000);
