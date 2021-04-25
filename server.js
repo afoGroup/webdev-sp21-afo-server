@@ -16,8 +16,8 @@ app.use(bodyParser.json());
 app.use(session({
     secret: 'webdevsp21afosecret',
     resave: false,
-    saveUninitialized: true
-    // cookie: { secure: true }
+    saveUninitialized: true,
+    cookie: { secure: true }
 }));
 
 app.use(function (req, res, next) {
