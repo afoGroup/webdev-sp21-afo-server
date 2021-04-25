@@ -34,21 +34,9 @@ module.exports = (app) => {
         req.session;
     });
 
-<<<<<<< HEAD
-    app.get('api/users/current', (req, res) => {
-        const currentUser = req.session.currentUser;
-        console.log("API CURRENT USER", currentUser);
-        if(currentUser){
-            res.send(currentUser)
-        } else {
-            console.log("no current user");
-            res.send("no current user")
-        }
-=======
     app.post('api/users/current', (req, res) => {
         const currentUser = req.session["currentUser"];
         res.send(currentUser);
->>>>>>> kris-server
     });
 
     app.post('/api/register', (req, res) => {
