@@ -36,13 +36,7 @@ module.exports = (app) => {
 
     app.post('api/users/current', (req, res) => {
         const currentUser = req.session["currentUser"];
-        console.log(currentUser);
-        if(currentUser){
-            res.send(currentUser)
-        } else {
-            console.log("no current user");
-            res.send("no current user")
-        }
+        res.send(currentUser);
     });
 
     app.post('/api/register', (req, res) => {
