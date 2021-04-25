@@ -5,13 +5,13 @@ let bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const MONGODB_URI = process.env.MONGODB_URI;
 
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
 mongoose.connect(
     MONGODB_URI,
     {useNewUrlParser: true, useUnifiedTopology: true})
     .catch((error) => {console.log(error)});
-
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
 
 app.use(session({
     secret: 'webdevsp21afosecret',
