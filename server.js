@@ -1,8 +1,9 @@
 const express = require('express');
+const session = require('express-session');
 const app = express();
 let bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const MONGODB_URI = process.env.MONGODB_URI
+const MONGODB_URI = process.env.MONGODB_URI;
 
 mongoose.connect(
     MONGODB_URI,
@@ -11,6 +12,12 @@ mongoose.connect(
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+app.use(session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: true
+}));
 
 app.use(function (req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
