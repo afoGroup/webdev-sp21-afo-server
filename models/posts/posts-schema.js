@@ -4,7 +4,7 @@ const postsSchema = mongoose.Schema(
     {
         text: String,
         createdDate: String,
-        owner: {type: String, ref: 'UsersModel' }
+        owner: {type: String, ref: 'UsersModel'}
     },
     {collection: 'posts'});
 
