@@ -14,7 +14,7 @@ module.exports = (app) => {
         usersService.findUserByUsername(req.params['username'])
             .then(user => res.json(user)));
 
-    app.get('/api/login', (req, res) =>
+    app.post('/api/login', (req, res) =>
         usersService.login(req.body)
             .then(user => {
                 if(user){
