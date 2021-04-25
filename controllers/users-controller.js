@@ -22,7 +22,7 @@ module.exports = (app) => {
             .then(user => {
                 if(user){
                     console.log("(user-controller)login in: " + user);
-                    req.session['currentUser'] = user;
+                    req.session["currentUser"] = user;
                     res.send(user)
                 } else{
                     res.send("invalid username-password combination")
@@ -36,6 +36,7 @@ module.exports = (app) => {
 
     app.get('api/users/current', (req, res) => {
         const currentUser = req.session["currentUser"];
+        console.log(currentUser);
         if(currentUser){
             res.send(currentUser)
         } else {
