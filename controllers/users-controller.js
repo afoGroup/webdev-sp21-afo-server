@@ -34,7 +34,7 @@ module.exports = (app) => {
         req.session;
     });
 
-    app.get('api/users/current', (req, res) => {
+    app.post('api/users/current', (req, res) => {
         const currentUser = req.session["currentUser"];
         console.log(currentUser);
         if(currentUser){
