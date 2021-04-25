@@ -14,9 +14,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use(session({
-    // secret: 'webdevsp21afosecret',
-    // resave: false,
-    // saveUninitialized: true
+    secret: 'webdevsp21afosecret',
+    resave: false,
+    saveUninitialized: true
     // cookie: { secure: true }
 }));
 
