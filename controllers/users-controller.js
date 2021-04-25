@@ -39,6 +39,7 @@ module.exports = (app) => {
         if(currentUser){
             res.send(currentUser)
         } else {
+            console.log("no current user");
             res.send("no current user")
         }
     });
