@@ -6,6 +6,7 @@ const findUserByUsername = (username) => usersDao.findUserByUsername(username);
 const createUser = (user) => usersDao.createUser(user);
 const updateUser = (user) => usersDao.updateUser(user);
 const deleteUser = (userId) => usersDao.deleteUser(userId);
+const login = (user) => usersDao.login(user);
 
 module.exports = {
     findAllUsers,
@@ -13,5 +14,6 @@ module.exports = {
     findUserByUsername,
     createUser,
     updateUser,
-    deleteUser
+    deleteUser,
+    login
 };

@@ -8,6 +8,7 @@ const updateUser = (user) => usersModel.update({_id:user._id},user);
 const deleteUser = (userId) => {
     usersModel.remove({_id: userId}, {justOne: true});
 };
+const login = (user) => usersModel.find({username: user.username, password: user.password});
 
 module.exports = {
     findAllUsers,
@@ -15,5 +16,6 @@ module.exports = {
     findUserByUsername,
     createUser,
     updateUser,
-    deleteUser
+    deleteUser,
+    login
 };
