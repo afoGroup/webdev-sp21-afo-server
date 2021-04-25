@@ -5,7 +5,6 @@ const app = express();
 let bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const MONGODB_URI = process.env.MONGODB_URI;
-const MONGOSTORE_URI = process.env.MONGOSTORE_URI;
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -18,7 +17,7 @@ mongoose.connect(
 app.use(session({
     secret: 'webdevsp21afosecret',
     store: MongoStore.create({
-        mongoUrl: MONGOSTORE_URI,
+        mongoUrl: MONGODB_URI,
         autoRemove: 'native'
     }),
     resave: false,
