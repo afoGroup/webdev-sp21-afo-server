@@ -10,11 +10,11 @@ module.exports = (app) => {
         postsService.findPostById(req.params['postId'])
             .then(post => res.json(post)));
 
-    app.post('/api/posts/create/:clubId', (req, res) =>
+    app.post('/api/clubs/:clubId/posts/create', (req, res) =>
         postsService.createPost(req.params['clubId'], req.body)
             .then(post => res.send(post)));
 
-    app.delete('/api/post/:postId/remove', (req, res) =>
+    app.delete('/api/posts/:postId/remove', (req, res) =>
         postsService.deletePost(req.params['postId'])
             .then(post => res.send(post)));
 };
