@@ -3,10 +3,10 @@ const session = require('express-session');
 const app = express();
 let bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-// const MONGODB_URI = process.env.MONGODB_URI;
+const MONGODB_URI = process.env.MONGODB_URI;
 
 mongoose.connect(
-    "mongodb+srv://wbdvafo21:wbdvafo21@anifansonly.n9z04.mongodb.net/anifansonlydb?retryWrites=true&majority",
+    MONGODB_URI,
     {useNewUrlParser: true, useUnifiedTopology: true})
     .catch((error) => {console.log(error)});
 
