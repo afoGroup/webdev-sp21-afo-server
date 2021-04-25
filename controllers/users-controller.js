@@ -2,41 +2,78 @@ const usersService = require('../services/users-service');
 
 module.exports = (app) => {
 
-    app.get('/api/users', (req, res) =>
-        usersService.findAllUsers()
-            .then(allUsers => res.json(allUsers)));
+    app.get('/api/users', (req, res) => {
+        return usersService.findAllUsers()
+            .then(allUsers => res.send(allUsers))
+    });
 
-    app.get('/api/users/:userId', (req, res) =>
-        usersService.findUserById(req.params['userId'])
-            .then(user => res.json(user)));
+    app.get('/api/users/:userId', (req, res) => {
+        return usersService.findUserById(req.params['userId'])
+            .then(user => res.send(user))
+    });
 
-    app.get('/api/search/users/:username', (req, res) =>
-        usersService.findUserByUsername(req.params['username'])
-            .then(user => res.json(user)));
+    app.get('/api/search/users/:username', (req, res) => {
+        return usersService.findUserByUsername(req.params['username'])
+            .then(user => res.send(user))
+    });
 
-    app.post('/api/login', (req, res) =>
-        usersService.login(req.body)
+    app.post('/api/login', (req, res) => {
+        return usersService.login(req.body)
             .then(user => {
                 if(user){
                     req.session['currentUser'] = user;
                     res.send(user)
                 } else{
-                    res.send(403)
+                    res.send("invalid username-password combination")
                 }
-            }));
+            })
+    });
 
-    app.post('/api/users/create', (req, res) =>
-        usersService.createUser(req.body)
+    app.post('/api/logout', (req, res) => {
+        req.session;
+    });
+
+    app.post('api/currentUser', (req, res) => {
+        const currentUser = req.session["currentUser"];
+        if(currentUser){
+            res.send(currentUser)
+        } else {
+            res.send("no currentUser")
+        }
+    });
+
+    app.post('/api/register', (req, res) => {
+        const givenUser = req.body;
+        return usersService.findUserByUsername(givenUser.username)
+            .then((existingUser) => {
+                if(existingUser){
+                    res.send("username already exists")
+                } else{
+                    usersService.createUser(givenUser)
+                        .then(user => {
+                            req.session['currentUser'] = user;
+                            res.send(user);
+                        });
+                }
+            })
+    });
+
+    app.post('/api/users/create', (req, res) => {
+        return usersService.createUser(req.body)
             .then(user => {
                 req.session['currentUser'] = user;
                 res.send(user);
-            }));
+            })
+    });
 
-    app.put('api/users/:userId/update', (req, res) =>
-        usersService.updateUser(req.body)
-            .then(user => res.send(user)));
+    app.put('api/users/:userId/update', (req, res) => {
+        return usersService.updateUser(req.body)
+            .then(user => res.send(user))
+    });
 
-    app.delete('/api/users/:userId/remove', (req, res) =>
-        usersService.deleteUser(req.params['userId'])
-            .then(user => res.send(user)));
+    app.delete('/api/users/:userId/remove', (req, res) => {
+        return usersService.deleteUser(req.params['userId'])
+            .then(user => res.send(user))
+    });
+
 };

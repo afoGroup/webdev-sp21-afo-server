@@ -1,14 +1,26 @@
 const usersModel = require('../models/users/users-model');
 
-const findAllUsers = () => usersModel.find();
-const findUserById = (userId) => usersModel.findById(userId);
-const findUserByUsername = (username) => usersModel.find({$text:{$search:username}});
-const createUser = (user) => usersModel.create(user);
-const updateUser = (user) => usersModel.update({_id:user._id},user);
-const deleteUser = (userId) => {
-    usersModel.remove({_id: userId}, {justOne: true});
-};
-const login = (user) => usersModel.find({username: user.username, password: user.password});
+const findAllUsers = () =>
+    usersModel.find();
+
+const findUserById = (userId) =>
+    usersModel.findById(userId);
+
+const findUserByUsername = (givenUsername) =>
+    usersModel.findOne({username:givenUsername});
+
+const createUser = (newUser) =>
+    usersModel.create(newUser);
+
+const updateUser = (user) =>
+    usersModel.update({_id:user._id},user);
+
+const deleteUser = (userId) =>
+    usersModel.remove({_id: userId});
+
+const login = (givenUser) =>
+    usersModel.findOne({username: givenUser.username, password: givenUser.password});
+
 
 module.exports = {
     findAllUsers,
