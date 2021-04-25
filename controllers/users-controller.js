@@ -34,12 +34,12 @@ module.exports = (app) => {
         req.session;
     });
 
-    app.post('api/currentUser', (req, res) => {
+    app.post('api/users/current', (req, res) => {
         const currentUser = req.session["currentUser"];
         if(currentUser){
             res.send(currentUser)
         } else {
-            res.send("no currentUser")
+            res.send("no current user")
         }
     });
 
