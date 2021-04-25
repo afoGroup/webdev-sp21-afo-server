@@ -10,19 +10,19 @@ module.exports = (app) => {
         clubsService.findClubById(req.params['clubId'])
             .then(club => res.json(club)));
 
-    app.get('/api/search/club/:title', (req, res) =>
+    app.get('/api/search/clubs/:title', (req, res) =>
         clubsService.findClubByTitle(req.params['title'])
             .then(club => res.json(club)));
 
-    app.post('/api/club/create', (req, res) =>
+    app.post('/api/clubs/create', (req, res) =>
         clubsService.createClub(req.body)
             .then(club => res.send(club)));
 
-    app.put('api/club/:clubId/update', (req, res) =>
+    app.put('api/clubs/:clubId/update', (req, res) =>
         clubsService.updateClub(req.body)
             .then(club => res.send(club)));
 
-    app.delete('/api/club/:clubId/remove', (req, res) =>
+    app.delete('/api/clubs/:clubId/remove', (req, res) =>
         clubsService.deleteClub(req.params['clubId'])
             .then(club => res.send(club)));
 };
