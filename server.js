@@ -21,8 +21,8 @@ app.use(session({
         autoRemove: 'native'
     }),
     resave: false,
-    saveUninitialized: true
-    // cookie: { secure: true }
+    saveUninitialized: true,
+    cookie: {maxAge: 60000, secure: true}
 }));
 
 app.use(function (req, res, next) {
