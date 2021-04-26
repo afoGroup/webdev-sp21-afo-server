@@ -35,7 +35,7 @@ module.exports = (app) => {
     });
 
     app.post('/api/users/current', (req, res) => {
-        const currentUser = req.session["currentUser"];
+        let currentUser = req.session["currentUser"];
         if(currentUser === undefined) {
             let tempUser = {username: 'wbdv-afo-logged-out'};
             res.send(JSON.stringify(tempUser));
@@ -45,7 +45,7 @@ module.exports = (app) => {
     });
 
     app.post('/api/register', (req, res) => {
-        const givenUser = req.body;
+        let givenUser = req.body;
         return usersService.findUserByUsername(givenUser.username)
             .then((existingUser) => {
                 if(existingUser){
