@@ -31,7 +31,8 @@ module.exports = (app) => {
     });
 
     app.post('/api/logout', (req, res) => {
-        req.session;
+        req.session["currentUser"] = {};
+        res.send("{}");
     });
 
     app.post('/api/users/current', (req, res) => {
@@ -41,7 +42,6 @@ module.exports = (app) => {
         } else {
             res.send(currentUser);
         }
-
     });
 
     app.post('/api/register', (req, res) => {
