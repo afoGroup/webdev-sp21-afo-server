@@ -39,7 +39,7 @@ module.exports = (app) => {
         const currentUser = req.session["currentUser"];
         if(currentUser === undefined) {
             const tempUser = {username: 'wbdv-afo-logged-out'};
-            res.send(tempUser);
+            res.send(JSON.stringify(tempUser));
         } else {
             res.send(currentUser);
         }
