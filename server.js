@@ -23,7 +23,7 @@ app.use(session({
     }),
     resave: false,
     saveUninitialized: true,
-    cookie: {maxAge: 360000, secure: true, sameSite:'none'}
+    cookie: {maxAge: 3600000 * 24, secure: true, sameSite:'none'}
 }));
 
 app.use(function (req, res, next) {
