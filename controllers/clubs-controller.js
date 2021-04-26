@@ -18,7 +18,7 @@ module.exports = (app) => {
         clubsService.createClub(req.body)
             .then(club => res.send(club)));
 
-    app.put('api/clubs/:clubId/update', (req, res) =>
+    app.put('/api/clubs/:clubId/update', (req, res) =>
         clubsService.updateClub(req.body)
             .then(club => res.send(club)));
 

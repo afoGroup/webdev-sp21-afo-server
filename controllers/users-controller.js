@@ -69,7 +69,7 @@ module.exports = (app) => {
             })
     });
 
-    app.put('api/users/:userId/update', (req, res) => {
+    app.put('/api/users/:userId/update', (req, res) => {
         return usersService.updateUser(req.body)
             .then(user => res.send(user))
     });
