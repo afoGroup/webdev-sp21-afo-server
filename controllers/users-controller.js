@@ -30,16 +30,16 @@ module.exports = (app) => {
     });
 
     app.post('/api/logout', (req, res) => {
-        req.session["currentUser"] = {};
-        const tempUser = {username: 'wbdv-afo-logged-out'};
-        res.send(tempUser);
+        const anonUser = {username: 'wbdv-afo-logged-out'}
+        req.session["currentUser"] = anonUser;
+        res.send(anonUser);
     });
 
     app.post('/api/users/current', (req, res) => {
         const currentUser = req.session["currentUser"];
         if(currentUser === undefined) {
             const tempUser = {username: 'wbdv-afo-logged-out'};
-            res.send(JSON.stringify(tempUser));
+            res.send(tempUser);
         } else {
             res.send(currentUser);
         }
