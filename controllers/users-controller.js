@@ -30,13 +30,15 @@ module.exports = (app) => {
     });
 
     app.post('/api/logout', (req, res) => {
-        req.session;
+        req.session["currentUser"] = {};
+        res.send("{}");
     });
 
     app.post('/api/users/current', (req, res) => {
         const currentUser = req.session["currentUser"];
         if(currentUser === undefined) {
-            res.send("undefined");
+            let tempUser = {username: 'wbdv-afo-logged-out'};
+            res.send(JSON.stringify(tempUser));
         } else {
             res.send(currentUser);
         }

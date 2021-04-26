@@ -26,8 +26,6 @@ app.use(session({
     cookie: {maxAge: 360000, secure: true, sameSite:'none'}
 }));
 
-// app.set("trust proxy", 1);
-
 app.use(function (req, res, next) {
     res.header('Access-Control-Allow-Origin', 'https://anifansonly.herokuapp.com');
     res.header('Access-Control-Allow-Headers',
