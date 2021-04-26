@@ -30,22 +30,20 @@ module.exports = (app) => {
     });
 
     app.post('/api/logout', (req, res) => {
-        req.session["currentUser"] = {};
-        res.send("{}");
+        req.session;
     });
 
-    app.post('/api/users/current', (req, res) => {
-        let currentUser = req.session["currentUser"];
+    app.post('api/users/current', (req, res) => {
+        const currentUser = req.session["currentUser"];
         if(currentUser === undefined) {
-            let tempUser = {username: 'wbdv-afo-logged-out'};
-            res.send(JSON.stringify(tempUser));
+            res.send("undefined");
         } else {
             res.send(currentUser);
         }
     });
 
     app.post('/api/register', (req, res) => {
-        let givenUser = req.body;
+        const givenUser = req.body;
         return usersService.findUserByUsername(givenUser.username)
             .then((existingUser) => {
                 if(existingUser){
