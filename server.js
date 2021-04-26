@@ -16,6 +16,7 @@ mongoose.connect(
 
 app.use(session({
     secret: 'webdevsp21afosecret',
+    proxy: true,
     store: MongoStore.create({
         mongoUrl: MONGODB_URI,
         autoRemove: 'native'
@@ -24,6 +25,8 @@ app.use(session({
     saveUninitialized: true,
     cookie: {maxAge: 360000, secure: true, sameSite:'none'}
 }));
+
+// app.set("trust proxy", 1);
 
 app.use(function (req, res, next) {
     res.header('Access-Control-Allow-Origin', 'https://anifansonly.herokuapp.com');
