@@ -21,7 +21,6 @@ module.exports = (app) => {
         return usersService.login(req.body)
             .then(user => {
                 if(user){
-                    console.log("(user-controller)login in: " + user);
                     req.session["currentUser"] = user;
                     res.send(user)
                 } else{
@@ -38,7 +37,8 @@ module.exports = (app) => {
     app.post('/api/users/current', (req, res) => {
         const currentUser = req.session["currentUser"];
         if(currentUser === undefined) {
-            res.send("{}");
+            let tempUser = {username: 'wbdv-afo-logged-out'};
+            res.send(JSON.stringify(tempUser));
         } else {
             res.send(currentUser);
         }
