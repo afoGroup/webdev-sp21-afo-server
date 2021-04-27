@@ -30,7 +30,7 @@ const updateUser = (user) =>
         });
 
 const deleteUser = (userId) =>
-    usersModel.remove({_id: userId});
+    usersModel.deleteOne({_id: userId});
 
 const login = (givenUser) =>
     usersModel.findOne({username: givenUser.username, password: givenUser.password});
