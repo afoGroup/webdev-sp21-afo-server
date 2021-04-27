@@ -81,18 +81,17 @@ module.exports = (app) => {
 
     app.delete('/api/users/:userId/remove', (req, res) => {
         let userId = req.params['userId'];
-        usersService.deleteUser(userId)
+        usersService.deleteUser(userId);
+        clubsService.deleteManyClubs(userId)
             .then(() => {
-                clubsService.deleteManyClubs(userId)
-                    .then(() => {
-                        const currentUser = req.session['currentUser'];
-                        const clubsToDelete = currentUser.ownerClubs;
-                        clubsToDelete.forEach(clubId => postsService.deleteManyPosts(clubId))
-                    }).then((result) => {
-                        req.session["currentUser"] = {username: 'wbdv-afo-logged-out'};
-                        res.send(result)
-                    })
+                const currentUser = req.session['currentUser'];
+                const clubsToDelete = currentUser.ownerClubs;
+                clubsToDelete.forEach(clubId => postsService.deleteManyPosts(clubId))
             })
+            .then((result) => {
+                req.session["currentUser"] = {username: 'wbdv-afo-logged-out'};
+                res.send(result)
+        })
     });
 
 };
