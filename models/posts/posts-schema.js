@@ -4,8 +4,8 @@ const postsSchema = mongoose.Schema(
     {
         text: String,
         createdDate: Date,
-        owner: {type: String, ref: 'UsersModel'}
+        owner: String
     },
-    {collection: 'posts'});
+    {collection: 'posts', versionKey: false});
 
 module.exports = postsSchema;

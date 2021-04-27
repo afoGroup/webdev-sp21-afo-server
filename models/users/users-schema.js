@@ -10,9 +10,9 @@ const usersSchema = mongoose.Schema(
             twitter: String,
             instagram: String,
             pictureURL: String,
-            clubs: [{type: String, ref: 'ClubsModel' }],
-            ownerClubs: [{type: String, ref: 'ClubsModel' }]
+            clubs: [String],
+            ownerClubs: [String]
     },
-    {collection: 'users'});
+    {collection: 'users', versionKey: false});
 
 module.exports = usersSchema;

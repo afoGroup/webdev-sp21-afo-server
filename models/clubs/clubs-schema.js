@@ -7,9 +7,9 @@ const clubsSchema = mongoose.Schema(
             createdDate: String,
             animeId: String,
             pictureURL: String,
-            owner: {type: String, ref: 'UsersModel' },
-            posts: [{type: String, ref: 'PostsModel' }]
+            owner: String,
+            posts: [String]
     },
-    {collection: 'clubs'});
+    {collection: 'clubs', versionKey: false});
 
 module.exports = clubsSchema;
