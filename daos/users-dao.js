@@ -29,9 +29,7 @@ const updateUser = (user) =>
                 },
         });
 
-const deleteUser = (userId) => {
-    usersModel.deleteOne({_id: userId});
-};
+const deleteUser = (userId) => usersModel.deleteOne({_id: userId});
 
 
 const login = (givenUser) =>
