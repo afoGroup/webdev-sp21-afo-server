@@ -22,10 +22,10 @@ module.exports = (app) => {
     app.post('/api/login', (req, res) => {
         return usersService.login(req.body)
             .then(user => {
-                if(user){
+                if (user) {
                     req.session["currentUser"] = user;
                     res.send(user)
-                } else{
+                } else {
                     res.send("invalid username-password combination")
                 }
             })
@@ -39,7 +39,7 @@ module.exports = (app) => {
 
     app.post('/api/users/current', (req, res) => {
         const currentUser = req.session["currentUser"];
-        if(currentUser === undefined) {
+        if (currentUser === undefined) {
             const tempUser = {username: 'wbdv-afo-logged-out'};
             res.send(tempUser);
         } else {
@@ -51,9 +51,9 @@ module.exports = (app) => {
         const givenUser = req.body;
         return usersService.findUserByUsername(givenUser.username)
             .then((existingUser) => {
-                if(existingUser){
+                if (existingUser) {
                     res.send({message: "username already exists"})
-                } else{
+                } else {
                     usersService.createUser(givenUser)
                         .then(user => {
                             req.session['currentUser'] = user;
@@ -91,7 +91,7 @@ module.exports = (app) => {
                 req.session["currentUser"] = {username: 'wbdv-afo-logged-out'};
                 usersService.deleteUser(userId)
                 res.send('{}')
-        })
+            })
     });
 
 };
