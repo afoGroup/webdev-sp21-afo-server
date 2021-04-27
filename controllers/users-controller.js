@@ -39,7 +39,7 @@ module.exports = (app) => {
         const currentUser = req.session["currentUser"];
         if(currentUser === undefined) {
             const tempUser = {username: 'wbdv-afo-logged-out'};
-            res.send(JSON.stringify(tempUser));
+            res.send(tempUser);
         } else {
             res.send(currentUser);
         }
@@ -50,7 +50,7 @@ module.exports = (app) => {
         return usersService.findUserByUsername(givenUser.username)
             .then((existingUser) => {
                 if(existingUser){
-                    res.send("username already exists")
+                    res.send({message: "username already exists"})
                 } else{
                     usersService.createUser(givenUser)
                         .then(user => {
@@ -75,8 +75,7 @@ module.exports = (app) => {
     });
 
     app.delete('/api/users/:userId/remove', (req, res) => {
-        return usersService.deleteUser(req.params['userId'])
-            .then(user => res.send(user))
+        return usersService.deleteUser(req.params['userId']);
     });
 
 };

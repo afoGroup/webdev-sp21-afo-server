@@ -13,7 +13,7 @@ const createUser = (newUser) =>
     usersModel.create(newUser);
 
 const updateUser = (user) =>
-    usersModel.update({_id:user._id},user);
+    usersModel.updateOne({_id:user._id},user);
 
 const deleteUser = (userId) =>
     usersModel.remove({_id: userId});
