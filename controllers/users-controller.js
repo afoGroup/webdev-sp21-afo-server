@@ -79,6 +79,9 @@ module.exports = (app) => {
 
     app.delete('/api/users/:userId/remove', (req, res) =>
         usersService.deleteUser(req.params['userId'])
-            .then(resultUser => res.send(resultUser)));
-
+            .then(resultUser => {
+                const anonUser = {username: 'wbdv-afo-logged-out'}
+                req.session["currentUser"] = anonUser
+                res.send(resultUser)
+            }));
 };
