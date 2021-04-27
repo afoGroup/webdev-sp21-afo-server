@@ -1,4 +1,5 @@
 const usersModel = require('../models/users/users-model');
+const ObjectID = require('mongodb').ObjectID;
 
 const findAllUsers = () =>
     usersModel.find();
@@ -13,7 +14,7 @@ const createUser = (newUser) =>
     usersModel.create(newUser);
 
 const updateUser = (user) =>
-    usersModel.updateOne({_id:user._id}, {$set: user});
+    usersModel.updateOne({_id: new ObjectID(user._id)}, {$set: user});
 
 const deleteUser = (userId) =>
     usersModel.remove({_id: userId});
