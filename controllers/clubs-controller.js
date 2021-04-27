@@ -14,7 +14,7 @@ module.exports = (app) => {
         clubsService.findClubsByTitle(req.params['title'])
             .then(club => res.json(club)));
 
-    app.get('/api/search/clubs-id', (req, res) =>
+    app.post('/api/search/clubs-id', (req, res) =>
         clubsService.findClubsById(req.body)
             .then(clubs => res.json(clubs)));
 
