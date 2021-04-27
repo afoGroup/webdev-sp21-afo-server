@@ -12,7 +12,8 @@ const updateClub = (club) => clubModel.updateOne({_id: new ObjectID(club._id)},
                 description: club.description,
                 pictureURL: club.pictureURL,
                 posts: club.posts
-            }});
+            },
+    });
 const deleteClub = (clubId) => clubModel.remove({_id: clubId}, {justOne: true});
 
 module.exports = {
