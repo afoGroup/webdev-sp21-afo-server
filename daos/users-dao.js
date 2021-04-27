@@ -23,7 +23,9 @@ const updateUser = (user) =>
                     bio: user.bio,
                     instagram: user.instagram,
                     twitter: user.twitter,
-                    pictureURL: user.pictureURL
+                    pictureURL: user.pictureURL,
+                    clubs: user.clubs,
+                    ownerClubs: user.ownerClubs
                 },
         });
 
