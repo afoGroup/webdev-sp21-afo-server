@@ -23,6 +23,7 @@ module.exports = (app) => {
             .then(club => res.send(club)));
 
     app.delete('/api/clubs/:clubId/remove', (req, res) =>
-        clubsService.deleteClub(req.params['clubId']));
+        clubsService.deleteClub(req.params['clubId'])
+            .then(resultClub => res.send(resultClub)));
 
 };

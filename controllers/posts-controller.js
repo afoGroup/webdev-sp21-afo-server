@@ -15,6 +15,7 @@ module.exports = (app) => {
             .then(post => res.send(post)));
 
     app.delete('/api/posts/:postId/remove', (req, res) =>
-        postsService.deletePost(req.params['postId']));
+        postsService.deletePost(req.params['postId'])
+            .then(resultPost => res.send(resultPost)));
 
 };

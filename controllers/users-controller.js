@@ -74,8 +74,8 @@ module.exports = (app) => {
             .then(user => res.send(user))
     });
 
-    app.delete('/api/users/:userId/remove', (req, res) => {
-        return usersService.deleteUser(req.params['userId']);
-    });
+    app.delete('/api/users/:userId/remove', (req, res) =>
+        usersService.deleteUser(req.params['userId'])
+            .then(resultUser => res.send(resultUser)));
 
 };
