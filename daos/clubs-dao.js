@@ -14,7 +14,7 @@ const updateClub = (club) => clubsModel.updateOne({_id: new ObjectID(club._id)},
                 posts: club.posts
             },
     });
-const deleteClub = (clubId) => clubModel.remove({_id: clubId}, {justOne: true});
+const deleteClub = (clubId) => clubsModel.remove({_id: clubId}, {justOne: true});
 
 module.exports = {
     findAllClubs,
