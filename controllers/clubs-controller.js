@@ -22,9 +22,10 @@ module.exports = (app) => {
         clubsService.createClub(req.body)
             .then(club => res.send(club)));
 
-    app.put('/api/clubs/:clubId/update', (req, res) =>
-        clubsService.updateClub(req.body)
-            .then(club => res.send(club)));
+    app.put('/api/clubs/:clubId/update', (req, res) => {
+        return clubsService.updateClub(req.body)
+            .then(club => res.send(club))
+    });
 
     app.delete('/api/clubs/:clubId/remove', (req, res) =>
         clubsService.deleteClub(req.params['clubId'])
