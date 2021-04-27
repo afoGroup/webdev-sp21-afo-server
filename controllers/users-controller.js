@@ -81,7 +81,6 @@ module.exports = (app) => {
 
     app.delete('/api/users/:userId/remove', (req, res) => {
         let userId = req.params['userId'];
-        usersService.deleteUser(userId);
         clubsService.deleteManyClubs(userId)
             .then(() => {
                 const currentUser = req.session['currentUser'];
@@ -90,7 +89,8 @@ module.exports = (app) => {
             })
             .then((result) => {
                 req.session["currentUser"] = {username: 'wbdv-afo-logged-out'};
-                // res.send('{}')
+                usersService.deleteUser(userId)
+                res.send('{}')
         })
     });
 

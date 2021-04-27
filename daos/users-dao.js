@@ -30,7 +30,7 @@ const updateUser = (user) =>
         });
 
 const deleteUser = (userId) => {
-    usersModel.deleteOne({_id: new ObjectID(userId)});
+    usersModel.deleteOne({_id: userId});
 };
 
 
