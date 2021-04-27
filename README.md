@@ -1,2 +1,2 @@
 # webdev-sp21-afo-server
-![Design.pdf](https://github.com/afoGroup/webdev-sp21-afo-server/files/6381377/Design.pdf)
+![AFO Database](https://user-images.githubusercontent.com/46580678/116173833-44f6b680-a6db-11eb-92c9-b060e7e13daf.png)
