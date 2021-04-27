@@ -2,7 +2,8 @@ const clubsDao = require('../daos/clubs-dao');
 
 const findAllClubs = () => clubsDao.findAllClubs();
 const findClubById = (clubId) => clubsDao.findClubById(clubId);
-const findClubByTitle = (clubTitle) => clubsDao.findClubByTitle(clubTitle);
+const findClubsByTitle = (clubTitle) => clubsDao.findClubsByTitle(clubTitle);
+const findClubsById = (clubIds) => clubsDao.findClubsById(clubIds);
 const createClub = (club) => clubsDao.createClub(club);
 const updateClub = (club) => clubsDao.updateClub(club);
 const deleteClub = (clubId) => clubsDao.deleteClub(clubId);
@@ -10,7 +11,8 @@ const deleteClub = (clubId) => clubsDao.deleteClub(clubId);
 module.exports = {
     findAllClubs,
     findClubById,
-    findClubByTitle,
+    findClubsByTitle,
+    findClubsById,
     createClub,
     updateClub,
     deleteClub
