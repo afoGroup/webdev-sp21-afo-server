@@ -6,7 +6,7 @@ const findClubById = (clubId) => clubsModel.findById(clubId);
 const findClubsByTitle = (clubTitle) => clubsModel.find({title:clubTitle});
 const findClubsById = (clubIds) => clubsModel.find({_id: clubIds});
 const createClub = (club) => clubsModel.create(club);
-const updateClub = (club) => clubModel.updateOne({_id: new ObjectID(club._id)},
+const updateClub = (club) => clubsModel.updateOne({_id: new ObjectID(club._id)},
     {$set:
             {
                 description: club.description,
