@@ -18,4 +18,7 @@ module.exports = (app) => {
         postsService.deletePost(req.params['postId'])
             .then(resultPost => res.send(resultPost)));
 
+    app.delete('/api/posts/:groupId/removeMany', (req, res) =>
+        postsService.deleteManyPosts(req.params['groupId'])
+            .then(resultPost => res.send(resultPost)));
 };

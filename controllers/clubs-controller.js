@@ -31,4 +31,7 @@ module.exports = (app) => {
         clubsService.deleteClub(req.params['clubId'])
             .then(resultClub => res.send(resultClub)));
 
+    app.delete('/api/clubs/:ownerId/removeMany', (req, res) =>
+        clubsService.deleteManyClubs(req.params['ownerId'])
+            .then(resultClub => res.send(resultClub)));
 };

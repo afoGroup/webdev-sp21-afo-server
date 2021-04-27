@@ -15,6 +15,7 @@ const updateClub = (club) => clubsModel.updateOne({_id: new ObjectID(club._id)},
             },
     });
 const deleteClub = (clubId) => clubsModel.deleteOne({_id: clubId});
+const deleteManyClubs = (ownerId) => clubsModel.deleteMany({ownerId: ownerId});
 
 module.exports = {
     findAllClubs,
@@ -23,5 +24,6 @@ module.exports = {
     findClubsById,
     createClub,
     updateClub,
-    deleteClub
+    deleteClub,
+    deleteManyClubs
 };

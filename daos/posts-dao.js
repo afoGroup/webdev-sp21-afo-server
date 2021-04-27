@@ -5,13 +5,12 @@ const findAllPosts = () => postsModel.find();
 const findPostById = (postId) => postsModel.findById(postId);
 const createPost = (clubId, post) => postsModel.create(post);
 const deletePost = (postId) =>  postsModel.deleteOne({_id: postId});
-
-const findPostsForClub = (clubId) => clubsModel.findById(clubId)
-    .populate('posts').then(club => club.posts);
+const deleteManyPosts = (groupId) => postsModel.deleteMany({groupId: groupId});
 
 module.exports = {
     findAllPosts,
     findPostById,
     createPost,
-    deletePost
+    deletePost,
+    deleteManyPosts
 };

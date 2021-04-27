@@ -7,7 +7,7 @@ const clubsSchema = mongoose.Schema(
             createdDate: String,
             animeId: String,
             pictureURL: String,
-            owner: String,
+            ownerId: String,
             posts: [String]
     },
     {collection: 'clubs', versionKey: false});

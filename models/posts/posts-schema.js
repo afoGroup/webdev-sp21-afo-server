@@ -4,7 +4,8 @@ const postsSchema = mongoose.Schema(
     {
         text: String,
         createdDate: Date,
-        owner: String
+        ownerId: String,
+        groupId: String
     },
     {collection: 'posts', versionKey: false});
 

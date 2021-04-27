@@ -7,6 +7,7 @@ const findClubsById = (clubIds) => clubsDao.findClubsById(clubIds);
 const createClub = (club) => clubsDao.createClub(club);
 const updateClub = (club) => clubsDao.updateClub(club);
 const deleteClub = (clubId) => clubsDao.deleteClub(clubId);
+const deleteManyClubs = (ownerId) => clubsDao.deleteManyClubs(ownerId);
 
 module.exports = {
     findAllClubs,
@@ -15,5 +16,6 @@ module.exports = {
     findClubsById,
     createClub,
     updateClub,
-    deleteClub
+    deleteClub,
+    deleteManyClubs
 };
