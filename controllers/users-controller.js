@@ -71,7 +71,10 @@ module.exports = (app) => {
 
     app.put('/api/users/:userId/update', (req, res) => {
         return usersService.updateUser(req.body)
-            .then(user => res.send(user))
+            .then(user => {
+                req.session['currentUser'] = req.body;
+                res.send(user)
+            })
     });
 
     app.delete('/api/users/:userId/remove', (req, res) =>
