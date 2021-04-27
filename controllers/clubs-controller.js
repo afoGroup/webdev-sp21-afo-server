@@ -1,4 +1,5 @@
 const clubsService = require('../services/clubs-service');
+const postsService = require('../services/posts-service');
 
 module.exports = (app) => {
 
@@ -27,9 +28,14 @@ module.exports = (app) => {
             .then(club => res.send(club))
     });
 
-    app.delete('/api/clubs/:clubId/remove', (req, res) =>
-        clubsService.deleteClub(req.params['clubId'])
-            .then(resultClub => res.send(resultClub)));
+    app.delete('/api/clubs/:clubId/remove', (req, res) => {
+        let clubId = req.params['clubId'];
+        clubsService.deleteClub(clubId)
+            .then(() => {
+                postsService.deleteManyPosts(clubId)
+                    .then(result => res.send(result))
+            })
+    });
 
     app.delete('/api/clubs/:ownerId/removeMany', (req, res) =>
         clubsService.deleteManyClubs(req.params['ownerId'])

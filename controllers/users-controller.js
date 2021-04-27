@@ -1,4 +1,6 @@
 const usersService = require('../services/users-service');
+const clubsService = require('../services/clubs-service');
+const postsService = require('../services/posts-service');
 
 module.exports = (app) => {
 
@@ -77,12 +79,20 @@ module.exports = (app) => {
             })
     });
 
-    app.delete('/api/users/:userId/remove', (req, res) =>
-        usersService.deleteUser(req.params['userId'])
-            .then(resultUser => {
-                const anonUser = {username: 'wbdv-afo-logged-out'};
-                req.session["currentUser"] = anonUser;
-                res.send(resultUser)
-            }).then(() => {})
-    );
+    app.delete('/api/users/:userId/remove', (req, res) => {
+        let userId = req.params['userId'];
+        usersService.deleteUser(userId)
+            .then(() => {
+                clubsService.deleteManyClubs(userId)
+                    .then(() => {
+                        const currentUser = req.session['currentUser'];
+                        const clubsToDelete = currentUser.ownerClubs;
+                        clubsToDelete.forEach(clubId => postsService.deleteManyPosts(clubId))
+                    }).then((result) => {
+                        req.session["currentUser"] = {username: 'wbdv-afo-logged-out'};
+                        res.send(result)
+                    })
+            })
+    });
+
 };
