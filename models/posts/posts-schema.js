@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const postsSchema = mongoose.Schema(
     {
         text: String,
-        createdDate: String,
+        createdDate: Date,
         owner: {type: String, ref: 'UsersModel'}
     },
     {collection: 'posts'});
