@@ -90,7 +90,7 @@ module.exports = (app) => {
             })
             .then((result) => {
                 req.session["currentUser"] = {username: 'wbdv-afo-logged-out'};
-                res.send(result)
+                // res.send('{}')
         })
     });
 
