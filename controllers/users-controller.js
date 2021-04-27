@@ -90,7 +90,9 @@ module.exports = (app) => {
             .then((result) => {
                 req.session["currentUser"] = {username: 'wbdv-afo-logged-out'};
                 usersService.deleteUser(userId)
-                res.send('{}')
+                    .then((deleteRes) => {
+                        res.session(deleteRes);
+                    })
             })
     });
 
