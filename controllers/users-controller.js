@@ -14,7 +14,7 @@ module.exports = (app) => {
             .then(user => res.send(user))
     });
 
-    app.post('/api/search/users/:username', (req, res) => {
+    app.get('/api/search/users/:username', (req, res) => {
         return usersService.findUserByUsername(req.params['username'])
             .then(userArray => res.send(userArray))
     });
